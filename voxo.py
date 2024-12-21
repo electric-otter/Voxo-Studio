@@ -2,6 +2,23 @@ import streamlit as st
 from pydub import AudioSegment
 import librosa
 import numpy as np
+import os
+import sys
+import subprocess
+
+# Function to install dependencies
+def install_dependencies():
+    try:
+        import pip
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "ensurepip", "--default-pip"])
+    
+    required_packages = ["streamlit", "pydub", "librosa", "numpy"]
+    for package in required_packages:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Call the install_dependencies function
+install_dependencies()
 
 # Title of the application
 st.title('Voxo Studio')
